@@ -61,29 +61,6 @@ constraint forall (t1 in 1..n, t2 in 1..n where t1 < t2 /\
                            where tile[f1] == t1 /\ tile[f2] == t2)
                           (f1 < f2));
 
-% icosoku redundant constraint: monotony of partial solutions
-%constraint forall (f in FACE, r in 0..2) (weight[tile[f], (3 + r - rot[f]) mod 3] <= cap[vrtx[f,r]]);
-%constraint forall (f1 in FACE, f2 in FACE where f1 < f2, r1 in 0..2, r2 in 0..2 where vrtx[f1,r1] == vrtx[f2,r2])
-%  (weight[tile[f1], (3 + r1 - rot[f1]) mod 3] +
-%   weight[tile[f2], (3 + r2 - rot[f2]) mod 3] <= cap[vrtx[f1, r1]]);
-%constraint forall (f1 in FACE, f2 in FACE where f1 < f2,
-%                   r1 in 0..2, r2 in 0..2 where vrtx[f1,r1] == vrtx[f2,r2],
-%                   f3 in FACE where f2 < f3,
-%                   r3 in 0..2 where vrtx[f1,r1] == vrtx[f3,r3])
-%  (weight[tile[f1], (3 + r1 - rot[f1]) mod 3] +
-%   weight[tile[f2], (3 + r2 - rot[f2]) mod 3] +
-%   weight[tile[f3], (3 + r3 - rot[f3]) mod 3] <= cap[vrtx[f1, r1]]);
-%constraint forall (f1 in FACE, f2 in FACE where f1 < f2,
-%                   r1 in 0..2, r2 in 0..2 where vrtx[f1,r1] == vrtx[f2,r2],
-%                   f3 in FACE where f2 < f3,
-%                   r3 in 0..2 where vrtx[f1,r1] == vrtx[f3,r3],
-%                   f4 in FACE where f3 < f4,
-%                   r4 in 0..2 where vrtx[f1,r1] == vrtx[f4,r4])
-%  (weight[tile[f1], (3 + r1 - rot[f1]) mod 3] +
-%   weight[tile[f2], (3 + r2 - rot[f2]) mod 3] +
-%   weight[tile[f3], (3 + r3 - rot[f3]) mod 3] +
-%   weight[tile[f4], (3 + r4 - rot[f4]) mod 3] <= cap[vrtx[f1, r1]]);
-
 %
 % Solving strategies
 %
