@@ -64,9 +64,10 @@ F1 < F2 :- assign(T1, F1), assign(T2, F2), weight(T1, 0, I1),
   weight(T2, 0 ,I1), weight(T1, 1, I2), weight(T2, 1, I2), weight(T1, 2, I3),
   weight(T2, 2, I3), T1 < T2.
 
-% put/6 is a print predicate, put(V1, V2, V3, W1, W2, W3) means that part of the
-% solution consists in placing tile (W1, W2, W3) on face V1V2V3 
-put(V1, V2, V3, W1, W2, W3) :- assign(T, F), vrtx(V1, F, 0), vrtx(V2, F, 1), vrtx(V3, F, 2), rotate(T, R), weight(T, (3 - R) \ 3, W1), weight(T, (4 - R) \ 3, W2), weight(T, (2 - R) \ 3, W3).
+% put/6 is a print predicate, put(W0, W1, W2, V0, V1, V2, C0, C1, C2) means that
+% the solution found puts tile (W0, W1, W2) on face (V0, V1, V2) whose vertices
+% correspond to capacities C0, C1 and C2.
+put(W0, W1, W2, V0, V1, V2, C0, C1, C2) :- assign(T, F), vrtx(V0, F, 0), vrtx(V1, F, 1), vrtx(V2, F, 2), rotate(T, R), weight(T, (3 - R) \ 3, W0), weight(T, (4 - R) \ 3, W1), weight(T, (2 - R) \ 3, W2), cap(V0, C0), cap(V1, C1), cap(V2, C2).
 
 % Output solution
 %#show assign/2.
@@ -74,4 +75,4 @@ put(V1, V2, V3, W1, W2, W3) :- assign(T, F), vrtx(V1, F, 0), vrtx(V2, F, 1), vrt
 
 % Output instructions (also for LaTeX output)
 #show cap/2.
-#show put/6.
+#show put/9.

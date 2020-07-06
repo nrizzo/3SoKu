@@ -76,14 +76,18 @@ solve satisfy;
 % Print functions
 %
 function string: instruction(FACE: f) =
-  let { 0..3: x = weight[fix(tile[f]), (3 - fix(rot[f])) mod 3],
-        0..3: y = weight[fix(tile[f]), (4 - fix(rot[f])) mod 3],
-        0..3: z = weight[fix(tile[f]), (2 - fix(rot[f])) mod 3],
-        VERTEX: u = vrtx[f, 0],
-        VERTEX: v = vrtx[f, 1],
-        VERTEX: w = vrtx[f, 2] }
-  in "Put tile (" ++ show(x) ++ ", " ++ show(y) ++ ", " ++ show(z) ++ ")" ++
-     " on face (" ++ show(u) ++ ", " ++ show(v) ++ ", " ++ show(w) ++ ").\n";
+  let { 0..3: w0 = weight[fix(tile[f]), (3 - fix(rot[f])) mod 3],
+        0..3: w1 = weight[fix(tile[f]), (4 - fix(rot[f])) mod 3],
+        0..3: w2 = weight[fix(tile[f]), (2 - fix(rot[f])) mod 3],
+        VERTEX: v0 = vrtx[f, 0],
+        VERTEX: v1 = vrtx[f, 1],
+        VERTEX: v2 = vrtx[f, 2],
+        1..12: c0 = cap[v0],
+        1..12: c1 = cap[v1],
+        1..12: c2 = cap[v2] }
+  in "Put tile (" ++ show(w0) ++ ", " ++ show(w1) ++ ", " ++ show(w2) ++ ")" ++
+     " on face corresponding to pegs " ++ show(c0) ++ ", " ++ show(c1) ++ ", " ++ show(c2) ++
+     " (face " ++ show(v0) ++ show(v1) ++ show(v2) ++ ").\n";
 
 %
 % Output
