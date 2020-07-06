@@ -31,18 +31,6 @@ rotation(0..2). % possible (clockwise) rotations
 %
 
 %
-% Auxiliary predicates
-%
-% contribute(T, V, P) means that the tile T is placed near V and contributes to
-% fill its capacity with weigth P
-contribute(T, V, P) :- assign(T, F), rotate(T, R), vrtx(V, F, A),
-  weight(T, (A - R + 3) \ 3, P).
-
-% vertex_sum(V, S) means that the sum of the vrtx of tiles surrounding 
-% vertex V add up to S
-vertex_sum(V, S) :- vertex(V), S = #sum { P,T : contribute(T, V, P) }.
-
-%
 % Solution
 %
 % the solution is a bijection between tiles and faces and each tile can be
@@ -53,7 +41,7 @@ vertex_sum(V, S) :- vertex(V), S = #sum { P,T : contribute(T, V, P) }.
 1 { rotate(T, R) : rotation(R) } 1 :- tile(T).
 
 % the capacity of each vertex must be filled
-S = C :- vertex_sum(V, S), cap(V, C).
+:- #sum{ P,F : vrtx(V, F, A), assign(T, F), rotate(T, R), weight(T, (A - R + 3) \ 3, P) } != C, cap(V, C).
 
 % simmetry breaking: uniform tiles should not be rotated
 rotate(T, 0) :- weight(T, 0, I), weight(T, 1, I), weight(T, 2, I).
