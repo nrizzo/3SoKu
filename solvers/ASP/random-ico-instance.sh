@@ -1,8 +1,6 @@
 #!/bin/bash
-# Script that, if called with no command line arguments, generates a random
-# instance of IcoSoKu, if called with 12 arguments puts those arguments
-# as the capacities of the vertices. It modifies the first twelve lines of
-# input-ico.lp
+# Script that generates a random instance of IcoSoKu by modifying the first
+# twelve lines of input-ico.lp
 # ~ Nicola Rizzo
 
 randperm=()

@@ -1,12 +1,8 @@
 #!/bin/bash
+# Script that generates a random instance of IcoSoKu by modifying line
+# containing "icosolve[...];" of file solver.js
+# ~ Nicola Rizzo
 
-if [ "$#" -ne 12 ]; then
-    input=$(shuf -i 1-12 | tr "\n" ",")
-else
-    for i in {1..12}
-    do
-        input+="${!i},"
-    done
-fi
+input=$(shuf -i 1-12 | tr "\n" ",")
 
 sed -i "s/icosolve(\[.*/icosolve([$input]);/" solver.js
