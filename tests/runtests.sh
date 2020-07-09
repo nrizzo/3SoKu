@@ -3,17 +3,20 @@
 # on instances of IcoSoKu.
 # ~ Nicola Rizzo
 
-RANDOM="snubdisphenoid" # seed
+mainseed="snubdisphenoid"
+get_seeded_perm()
+{ # $mainseed + input parameter $1 define the seed
+  seed="$mainseed$1"
+  openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt </dev/zero 2>/dev/null
+}
 
 echo -n "Generating batch of tests... "
 echo -n > batch
 for i in {1..100}
 do
 	# shuf is used to generate pseudo-random IcoSoKu instances
-	TEMP="$RANDOM"
 	shuf -i1-12 \
-		--random-source=<(openssl enc -aes-256-ctr \
-		-pass pass:"$TEMP" -nosalt </dev/zero 2>/dev/null) | \
+		--random-source=<(get_seeded_perm $i) | \
 		tr "\n" " " >> batch
 	echo >> batch
 done
