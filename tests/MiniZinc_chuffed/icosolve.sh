@@ -4,7 +4,7 @@ instance=$(echo "cap = [$1, $2, $3, $4, $5, $6, $7, $8, $9, ${10}, ${11}, ${12}]
 weights=$(cat input-ico.dzn | tail -n +2)
 
 output=$(echo "$instance" | cat IcoSoKu.mzn input-ico.dzn - | \
-	minizinc -v --solver chuffed -r snubdisphenoid --input-from-stdin 2>&1)
+	minizinc -v --solver chuffed --input-from-stdin --fzn-flags "--rnd-seed 1" 2>&1)
 
 if echo "$output" | grep --quiet UNSATISFIABLE
 then
