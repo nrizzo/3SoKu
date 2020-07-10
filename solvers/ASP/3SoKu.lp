@@ -62,6 +62,6 @@ put(W0, W1, W2, V0, V1, V2, C0, C1, C2) :- assign(T, F), vrtx(V0, F, 0), vrtx(V1
 %#show assign/2.
 %#show rotate/2.
 
-% Output instructions (also for LaTeX output)
+% Output instructions
 #show cap/2.
 #show put/9.

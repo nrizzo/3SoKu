@@ -94,6 +94,3 @@ function string: instruction(FACE: f) =
 %
 % human-readable instructions to the solution
 output [ instruction(f) | f in FACE ];
-
-% LaTeX code to generate a document showing the solution (pgfplotstable)
-%output [ latex_print_instance(cap), latex_print_solution() ];
