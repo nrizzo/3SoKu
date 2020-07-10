@@ -55,6 +55,7 @@ F1 < F2 :- assign(T1, F1), assign(T2, F2), weight(T1, 0, I1),
 % put/6 is a print predicate, put(W0, W1, W2, V0, V1, V2, C0, C1, C2) means that
 % the solution found puts tile (W0, W1, W2) on face (V0, V1, V2) whose vertices
 % correspond to capacities C0, C1 and C2.
+% WARNING: put/6 affects grounding size, remove if necessary
 put(W0, W1, W2, V0, V1, V2, C0, C1, C2) :- assign(T, F), vrtx(V0, F, 0), vrtx(V1, F, 1), vrtx(V2, F, 2), rotate(T, R), weight(T, (3 - R) \ 3, W0), weight(T, (4 - R) \ 3, W1), weight(T, (2 - R) \ 3, W2), cap(V0, C0), cap(V1, C1), cap(V2, C2).
 
 % Output solution
