@@ -6,7 +6,7 @@
 mainseed="snubdisphenoid"
 get_seeded_perm()
 { # $mainseed + input parameter $1 define the seed
-  seed="$mainseed$1"
+  seed="$1$mainseed"
   openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt </dev/zero 2>/dev/null
 }
 
