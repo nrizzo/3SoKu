@@ -1,5 +1,5 @@
 %
-% MiniZinc Solver for 3SoKu: given a polyhedron P with m vertices and n
+% MiniZinc Solver for 3coSoKu: given a polyhedron P with m vertices and n
 %   triangular faces, a capacity assigned to each vertex and n triangular
 %   tiles presenting integer weight at each corner, find an arrangement of the
 %   tiles to the faces (with a rotation) such that the sum of the weights near
