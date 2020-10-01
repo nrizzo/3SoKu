@@ -25,7 +25,7 @@ array[FACE] of var 0..2: rot; % rotation of the tile placed on each face
 
 function var int: vertex_sum(VERTEX: v) =
   sum (f in FACE, r in 0..2 where vrtx[f, r] == v)
-      (weight[tile[f], (3 + r - rot[f]) mod 3]);
+      (weight[tile[f], [1,2,0,1,2][3 + r - rot[f]]]); % equiv (3+r-rot[f]) % 3
 
 constraint alldifferent(tile);
 constraint forall (v in VERTEX) (vertex_sum(v) == cap[v]);
